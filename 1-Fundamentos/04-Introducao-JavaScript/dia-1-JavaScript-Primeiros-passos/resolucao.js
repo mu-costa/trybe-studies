@@ -1,14 +1,15 @@
-const valor = -3;
+const angulo1 = 60;
+const angulo2 = 60;
+const angulo3 = 60;
 
-if (valor > 0 ){
+const somaAngulos = angulo1 + angulo2 + angulo3;
+    if ( somaAngulos == 180){
 
-    console.log("Valor positivo");
+    console.log("true");
+
 }
-else if ( valor === 0){
+    else {
 
-    console.log ("Valor igual a zero");
-}
-else {
+    console.log("false");
 
-    console.log ("Valor negativo");
 }
