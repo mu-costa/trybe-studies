@@ -1,15 +1,29 @@
-const angulo1 = 60;
-const angulo2 = 60;
-const angulo3 = 60;
+let nomePeca;
+let movimento;
 
-const somaAngulos = angulo1 + angulo2 + angulo3;
-    if ( somaAngulos == 180){
+nomePeca = "PEON";
 
-    console.log("true");
+switch (nomePeca.toLowerCase()){
 
-}
-    else {
-
-    console.log("false");
-
+    case "peon":
+        console.log("frent");
+        break;
+    case "bishop":
+        console.log("diagonals");
+        break;
+    case "tower":
+        console.log("forward and sideways");
+        break;
+    case "horse":
+        console.log("L movement");
+        break;
+    case "queen":
+        console.log("any straight line");
+        break;
+    case "king":
+        console.log("any side on your perimeter");
+        break;
+    default:
+        console.log("This part donst exist")
+        break;
 }
