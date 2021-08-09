@@ -1,13 +1,10 @@
-const a,b;
+const valor1 = 4;
+const valor2 = 5;
 
-let sum,subtration,mult,division,mod;
+if ( valor1 > valor2){
 
-sum = a + b;
+    console.log("Valor 1 é o maior");
+} else {
 
-subtration = a - b;
-
-mult = a * b;
-
-division = a / b;
-
-mod = a % b ;
+    console.log("Valor 2 é o maior");
+}
