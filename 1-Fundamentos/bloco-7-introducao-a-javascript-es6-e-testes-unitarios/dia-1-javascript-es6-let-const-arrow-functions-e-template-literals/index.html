@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+      h1{
+         text-align: center;
+      }
+      #button {
+        text-align:center;
+
+      }
+  </style>
+</head>
+<body>
+  <h1>Exercício 3 do bloco 7</h1>
+  <div id="button">
+    <button id='btn'>Clique aqui</button>
+    <h3 id='show-click'>0 clicks</h3>
+  </div>
+  
+</body>
+<script>
+    let btn = document.getElementById('btn');
+    let returnClicks = document.getElementById('show-click');
+    let x = 0;
+    btn.addEventListener('click',()=>{
+      returnClicks.innerText = `${x += 1} clicks`;
+      localStorage.setItem('x',x);
+    })
+</script>
+</html>
