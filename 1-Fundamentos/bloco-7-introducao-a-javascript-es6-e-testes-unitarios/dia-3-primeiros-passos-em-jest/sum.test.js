@@ -1,4 +1,3 @@
-const { expect } = require("@jest/globals");
 const sum = require("./sum");
 
 describe('Função soma', () => {
