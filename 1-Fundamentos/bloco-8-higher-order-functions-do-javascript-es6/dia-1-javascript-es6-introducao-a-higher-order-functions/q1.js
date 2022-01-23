@@ -2,31 +2,24 @@
 
 //HoF que vai receber a função hiredPeople como parametro
 
-const newEmployees = (namePerson) => {
-    const employees = {
-      id1: '', // Nome: Pedro Guerra -> Chame sua função passando o nome Pedro Guerra como parâmetro, substituindo as aspas
-      id2: '', // Nome: Luiza Drumond -> Chame sua função passando o nome Luiza Drumond como parâmetro, substituindo as aspas
-      id3: '', // Nome: Carla Paiva -> Chame sua função passando o nome Carla Paiva como parâmetro, substituindo as aspas
-    }
-    
-    if (namePerson === 'Pedro Guerra'){
-      employees['id1'] = hiredPeople(namePerson);
-    } else if (namePerson === 'Luiza Drumond'){
-      employees['id2'] = hiredPeople(namePerson);
-    } else if (namePerson === 'Carla Paiva'){
-      employees['id3'] = hiredPeople(namePerson);
-    }
+//função que vai receber o nome completo e retorno um objeto com o nome e o email
+const hiredPeople = (name) => {
+  const people = {
+    nomeCompleto : name,
+    email: `${name.split(' ').join('_').toLowerCase()}@trybe.com`
+  }
+  return Object.values(people);
+}
 
-    return Object.entries(employees);
+const newEmployees = () => {
+  
+    const employees = {
+      id1: hiredPeople('Pedro Guerra'), // Nome: Pedro Guerra -> Chame sua função passando o nome Pedro Guerra como parâmetro, substituindo as aspas
+      id2: hiredPeople('Luiza Drumond'), // Nome: Luiza Drumond -> Chame sua função passando o nome Luiza Drumond como parâmetro, substituindo as aspas
+      id3: hiredPeople('Carla Paiva') // Nome: Carla Paiva -> Chame sua função passando o nome Carla Paiva como parâmetro, substituindo as aspas
+    }
+      
+    return employees;
   };
 
-//função que vai receber o nome completo e retorno um objeto com o nome e o email
-  const hiredPeople = (name) => {
-    const people = {
-      nomeCompleto : name,
-      email: `${name.split(' ').join('_').toLowerCase()}@trybe.com`
-    }
-    return Object.values(people);
-  }
-  
-  console.log(newEmployees('Luiza Drumond'));
+console.log(newEmployees());
