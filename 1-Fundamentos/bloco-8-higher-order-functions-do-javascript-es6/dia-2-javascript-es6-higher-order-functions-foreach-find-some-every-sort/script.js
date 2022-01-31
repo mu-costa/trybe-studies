@@ -79,4 +79,27 @@ const books = [
     return name;
   }
 
-  console.log(authorBornIn1947(books));
+  function smallerName(arr) {
+    let nameBook;
+    //primeiro passo criar um array somente com os nomes dos livros
+    let namesBooks = [];
+    arr.forEach( (element) => namesBooks.push(element.name));
+    //segundo passo: juntar o nome e remover os espaços entre as letras
+    //terceiro passo encontrar o livro cujo nome tem o menor tamanho;
+      
+    let smallerName = namesBooks[0];
+    let indexOfSmallerName = 0;
+    namesBooks.forEach((element,index) =>{
+        //remove os espaços do string para poder compará-las
+        element = element.split(' ').join('');
+        smallerName = smallerName.split(' ').join('');
+
+        if(smallerName.length > element.length){
+            smallerName = element;
+            indexOfSmallerName = index;
+        }
+    });
+    return namesBooks[indexOfSmallerName];
+  }
+
+  console.table(smallerName(books));
