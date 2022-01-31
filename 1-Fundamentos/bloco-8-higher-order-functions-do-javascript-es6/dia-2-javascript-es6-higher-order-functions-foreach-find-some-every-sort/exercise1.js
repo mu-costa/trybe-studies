@@ -62,7 +62,7 @@ const books = [
   ];
   
   // Adicione o código do exercício aqui:
-
+  // Solução da primeira questão
   function authorBornIn1947(arr) {
     // escreva aqui o seu código
     const yearsBirthday = [];
@@ -78,7 +78,7 @@ const books = [
 
     return name;
   }
-
+  //Solução da segunda questão
   function smallerName(arr) {
     let nameBook;
     //primeiro passo criar um array somente com os nomes dos livros
@@ -102,4 +102,11 @@ const books = [
     return namesBooks[indexOfSmallerName];
   }
 
-  console.table(smallerName(books));
+  console.log(smallerName(books));
+
+  function getNamedBook (arr){
+    const findName = arr.find((book)=> book.name.length === 26);
+    return findName.name;
+  }
+
+console.log(getNamedBook(books));
