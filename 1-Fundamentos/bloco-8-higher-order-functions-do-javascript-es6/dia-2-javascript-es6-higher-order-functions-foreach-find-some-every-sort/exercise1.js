@@ -121,4 +121,8 @@ function booksOrderedByReleaseYearDesc(arr) {
   })
   return books;
 }
-console.log(booksOrderedByReleaseYearDesc(books));
+
+function everyoneWasBornOnSecXX(arr) {
+  // utilizando a HoF every para verificar se todos autores nasceram no século XX
+  return arr.every((element) => element.author.birthYear <= 2000 && element.author.birthYear  >= 1901);
+}
