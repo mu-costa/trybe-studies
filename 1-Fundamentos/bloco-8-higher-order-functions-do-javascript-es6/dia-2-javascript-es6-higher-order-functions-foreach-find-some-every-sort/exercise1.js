@@ -102,11 +102,23 @@ const books = [
     return namesBooks[indexOfSmallerName];
   }
 
-  console.log(smallerName(books));
 
   function getNamedBook (arr){
     const findName = arr.find((book)=> book.name.length === 26);
     return findName.name;
   }
 
-console.log(getNamedBook(books));
+
+function booksOrderedByReleaseYearDesc(arr) {
+  // ordene os livros por data de lançamento em ordem decrescente
+  books.sort( (a , b) => {
+    if (a.releaseYear > b.releaseYear){
+      return -1;
+    }
+    if (b.releaseYear > a.releaseYear){
+      return 1;
+    }
+  })
+  return books;
+}
+console.log(booksOrderedByReleaseYearDesc(books));
