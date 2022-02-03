@@ -57,7 +57,7 @@ const books = [
       name: 'H. P. Lovecraft',
       birthYear: 1890,
     },
-    releaseYear: 1928,
+    releaseYear: 1928
   },
 ];
 
@@ -67,4 +67,13 @@ function formatedBookNames() {
     const formated = books.map ((book) =>`${book.name} - ${book.genre} - ${book.author.name}` );
     return formated;
   }
-  console.log(formatedBookNames());
+//segunda questão
+
+function nameAndAge() {
+    // escreva seu código aqui
+    const nameAge = books.map((book)=> ({age : book.releaseYear - book.author.birthYear, author : `${book.author.name}`}))
+    .sort((a,b) => a.age - b.age);
+    return nameAge;
+  }
+
+console.log(nameAndAge());
