@@ -97,4 +97,11 @@ function fantasyOrScienceFictionAuthors() {
   .sort();
   return filterMapScienceOrFantasy;
 }
-console.log(fantasyOrScienceFictionAuthors());
+//sexta questão
+function oldBooks() {
+  // escreva seu código aqui
+  const orderedByRelease = books.filter((book)=> book.releaseYear <= 1962)
+    .map((book) => book.name);
+    return orderedByRelease;
+}
+console.log(oldBooks());
