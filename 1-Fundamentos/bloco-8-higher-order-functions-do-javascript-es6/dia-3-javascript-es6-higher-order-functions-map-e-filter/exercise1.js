@@ -75,5 +75,18 @@ function nameAndAge() {
     .sort((a,b) => a.age - b.age);
     return nameAge;
   }
+// terceira questão
 
-console.log(nameAndAge());
+function fantasyOrScienceFiction() {
+    // escreva seu código aqui
+    const filterByGenre = books.filter((book) => book.genre === 'Fantasia' || book.genre === 'Ficção Científica');
+    return filterByGenre;
+  }
+//quarta questão
+ function oldBooksOrdered() {
+    // escreva seu código aqui
+    const orderedByRelease = books.filter((book)=> book.releaseYear <= 1962)
+    .sort((a,b) => a.releaseYear - b.releaseYear);
+    return orderedByRelease;
+  }
+  console.log(oldBooksOrdered());
