@@ -89,4 +89,12 @@ function fantasyOrScienceFiction() {
     .sort((a,b) => a.releaseYear - b.releaseYear);
     return orderedByRelease;
   }
-  console.log(oldBooksOrdered());
+//quinta questão
+function fantasyOrScienceFictionAuthors() {
+  // escreva seu código aqui
+  const filterMapScienceOrFantasy = books.filter((book) => book.genre === 'Fantasia' || book.genre === 'Ficção Científica')
+  .map((book) => book.author.name)
+  .sort();
+  return filterMapScienceOrFantasy;
+}
+console.log(fantasyOrScienceFictionAuthors());
