@@ -104,4 +104,15 @@ function oldBooks() {
     .map((book) => book.name);
     return orderedByRelease;
 }
-console.log(oldBooks());
+//sétima questão
+function authorWith3DotsOnName() {
+  // escreva seu código aqui
+  const filterNamesAuthor = books.map((book) => book.author.name)
+  .forEach((name) => {
+    const pattern = /[a-zA-Z]\.\s[a-zA-Z]\.\s[a-zA-Z]\./;
+    if(pattern.test(name) === true){
+      console.log(name);
+    }
+  })
+}
+authorWith3DotsOnName();
