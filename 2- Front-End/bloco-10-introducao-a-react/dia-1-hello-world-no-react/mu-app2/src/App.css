@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+.cards {
+  width: 30%;
+  height:  50vh;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: #61dafb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-cards {
+  display: flex;
+  justify-content: center;
+}
+
+#header {
+  text-align: center;
+}
+
+#footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  background-color: #282c34;
+}

@@ -27,12 +27,12 @@ class Content extends React.Component {
     render (key){
         return (
             conteudos.map(({conteudo,bloco,status}) => {
-                return <div>
-                        <span>O conteúdo é : {conteudo}</span>
-                        <p>Status: {bloco}</p>
-                        <p>Bloco:  {status}</p>
-                        <hr></hr>                               
-                     </div>
+                return <div className='cards'>
+                         <span>O conteúdo é : {conteudo}</span>
+                            <p>Status: {bloco}</p>
+                            <p>Bloco:  {status}</p>
+                            <hr></hr>
+                      </div>
             })
         )
     }
