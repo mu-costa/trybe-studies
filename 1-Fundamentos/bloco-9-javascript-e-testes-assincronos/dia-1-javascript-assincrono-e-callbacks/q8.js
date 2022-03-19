@@ -38,4 +38,7 @@ const pokemons = [
   
   module.exports = {
     getPokemonDetails,
+    filterPokemon,
+    printsMessage,
+    pokemons
   };
