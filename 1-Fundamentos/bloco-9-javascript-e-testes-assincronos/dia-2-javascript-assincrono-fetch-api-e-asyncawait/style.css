@@ -1,0 +1,13 @@
+#crypto-coins{
+    border: 1px solid black;
+}
+
+p{
+    border: 1px solid black;
+    margin: 5px;
+    background-color: aqua;
+}
+p:hover{
+    font-size: 20px;
+    cursor: pointer;
+}
