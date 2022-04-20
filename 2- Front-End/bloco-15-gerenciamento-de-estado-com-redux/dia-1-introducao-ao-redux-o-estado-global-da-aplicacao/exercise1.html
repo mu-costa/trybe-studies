@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <style>
+      body {
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+      }
+
+      #container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      button {
+        height: 50px;
+        width: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <p>Color: <span id="value">white</span></p>
+      <button id="previous">Previous color</button>
+      <button id="next">Next color</button>
+      <button id="random">Random color</button>
+    </div>
+    <script>
+      const ESTADO_INICIAL = {
+        colors: ["white", "black", "red", "green", "blue", "yellow"],
+        index: 0,
+      };
+      function criarCor() {
+        const oneChar = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+        let cor = '#';
+        const aleatorio = () => Math.floor(Math.random() * oneChar.length);
+        for (let i = 0; i < 6; i += 1) {
+             cor += oneChar[aleatorio()];
+         }
+        return cor;
+    }
+      // criar o reducer
+      const reducer = (state = ESTADO_INICIAL, action) => {
+        switch (action.type) {
+          case "INCREMENTO":
+            return {
+              ...state,
+              index: state.index + 1,
+            };
+          case "DECREMENTO":
+            return {
+              ...state,
+              index: state.index - 1,
+            };
+          case "RANDOM":
+              return {
+                  colors:[...state.colors, action.payload.newColor],
+                  index: action.payload.actualIndex,
+              }
+          default:
+              return state
+        }
+    };
+      // criar o store
+      const store = Redux.createStore(reducer);
+      // criar as actions
+      const actionIncremento = () => {
+        const stateGlobal = store.getState();
+        const { index, colors } = stateGlobal;
+        const maxArray = colors.length - 1;
+        // tratando para que não aumente o index alem do tamanho do array
+        if (index < maxArray) {
+          store.dispatch({ type: "INCREMENTO" });
+        }
+      };
+
+      const actionDecremento = () => {
+        const stateGlobal = store.getState();
+        //tratando para evitar de index ficar negativo
+        if (stateGlobal.index > 0) {
+          store.dispatch({ type: "DECREMENTO" });
+        }
+      };
+
+      const actionRandomColor = () => {
+          const newColor = criarCor();
+          const stateGlobal = store.getState();
+          const { colors, index } = stateGlobal;
+          const maxArray = colors.length;
+          const actualIndex = maxArray;
+          store.dispatch(
+         {
+          type:'RANDOM', 
+          payload:{
+              newColor,
+              actualIndex,
+          }
+        
+         })
+      }
+      // acessar os botões
+      const btnIncremento = document.getElementById("next");
+      const btnDecremento = document.getElementById("previous");
+      const btnRandom = document.getElementById('random');
+
+      btnIncremento.addEventListener("click", actionIncremento);
+      btnDecremento.addEventListener("click", actionDecremento);
+      btnRandom.addEventListener('click', actionRandomColor);
+
+      store.subscribe(() => {
+        const stateGlobal = store.getState();
+        const { index, colors } = stateGlobal;
+    
+        // acessar o elemento 
+        const value = document.getElementById('value');
+        const container = document.getElementById('container');
+        value.innerText = colors[index];
+        container.style.backgroundColor = colors[index];
+        console.log(stateGlobal);
+      });
+    </script>
+  </body>
+</html>
