@@ -32,3 +32,13 @@ RIGHT JOIN pixar.movies AS mov
 ON mov.theater_id = thea.id 
 ORDER BY thea.name;
 
+/* sexta questão */
+SELECT  mov.* 
+FROM pixar.theater AS thea 
+INNER JOIN pixar.movies AS mov  
+ON mov.theater_id = thea.id  
+INNER JOIN pixar.box_office AS box 
+ON mov.id = box.movie_id 
+WHERE (mov.theater_id IS NOT NULL ) AND (box.rating > 8);
+
+
