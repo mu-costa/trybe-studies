@@ -1,0 +1,19 @@
+{
+  "name": "my-scripts",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "imc": "node imc.js",
+    "velocidade": "node velocidade",
+    "sorteio": "node sorteio",
+    "start": "node index"
+  },
+  "keywords": [],
+  "author": "Murilo Costa",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
