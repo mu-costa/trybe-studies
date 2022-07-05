@@ -24,11 +24,27 @@ const filterCharacters = (...id) => {
                 const ids = [...id];
                 return filterById(arr, ids);
              })
-             .then((data) => {
-                 const fileChanged = JSON.stringify(data);
-                return changeFile(fileChanged);
-             })
+             .then((arr) => changeFile(arr))
              .catch((err) => console.log(err));
 }
 
-filterCharacters('10', '6').then((e) => console.log(e));
+const createFamily = async () => {
+    try {
+        const response = await fs.readFile(file, 'utf-8');
+        let data = await JSON.parse(response);
+        data = data.filter((e,index) => {
+            if(index < 4){
+                return e;
+            }
+        })
+        return fs.writeFile('./simpsonFamily.json', JSON.stringify(data))
+                 .then(() => console.log("Arquivo escrito com sucesso"))
+                 .catch((err) => console.log(err));
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+/* filterCharacters('10', '6').then((e) => console.log(e));
+ */
+createFamily();
