@@ -24,5 +24,11 @@ describe("Testa a primeira função", () => {
         // act
         // assert 
        expect(resposta).to.be.equals("neutro"); 
+    });
+    
+    it(("Testa se a função retorna um erro caso o parametro informado não seja do tipo Number"), ()=>{
+        // arrange
+        // assert 
+       expect(() => calculaSituacao("casa")).to.throw();
     });      
 });
