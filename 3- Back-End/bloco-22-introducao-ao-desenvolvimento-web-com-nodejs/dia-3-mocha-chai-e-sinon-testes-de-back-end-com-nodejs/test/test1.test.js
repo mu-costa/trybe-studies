@@ -1,5 +1,9 @@
 const { expect } = require('chai');
-const calculaSituacao = require('../src/calculaSituacao');
+const { fs } =  require('fs');
+const sinon = require('sinon');
+
+const { calculaSituacao } = require('../src/calculaSituacao');
+const { writeFile } = require('../src/calculaSituacao');
 
 describe("Testa a primeira função", () => {
     it(("Testa se a função retorna positivo caso o número seja maior que zero"), ()=>{
@@ -32,3 +36,12 @@ describe("Testa a primeira função", () => {
        expect(() => calculaSituacao("casa")).to.throw();
     });      
 });
+
+
+describe('Testa se a função escreverá um conteúdo em um arquivo específico', ()=>{
+    it("Testa se ao escrever o contéudo a função retorna um  'ok '",() =>{
+        const data = writeFile("mu.txt", 'oi');
+        console.log(data);
+        expect(data).to.be.equals('ok');
+    })
+})
