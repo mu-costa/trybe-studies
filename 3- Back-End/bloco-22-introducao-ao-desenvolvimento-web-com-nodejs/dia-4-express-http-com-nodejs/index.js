@@ -11,6 +11,12 @@ app.get('/ping', (_req, res) => {
     res.json({ message: 'pong'});
 });
 
+app.post('/hello', (req, res) => {
+    const { name } = req.body;
+
+    res.json({ message: `Hello, ${name}!`});
+});
+
 app.listen(3001,() =>{
     console.log("Aplicação rodando");
 })
