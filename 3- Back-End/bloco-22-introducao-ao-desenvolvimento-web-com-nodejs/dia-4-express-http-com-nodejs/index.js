@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const fs = require('fs');
+
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -9,6 +11,30 @@ app.use(bodyParser.json());
 
 app.get('/ping', (_req, res) => {
     res.json({ message: 'pong'});
+});
+
+app.get('/simpsons', (_req,res) => {
+    const simpsons = fs.readFileSync('./simpsons.json','utf-8');
+    res.status(200).send(simpsons);
+});
+
+app.get('/simpsons/:id', (req,res) => {
+    const { id } = req.params;
+    const simpsons = JSON.parse(fs.readFileSync('./simpsons.json','utf-8'));
+    const findSimpson = simpsons.find((e) => e.id === id);
+
+    if(!findSimpson) return res.status(404).json({ message: 'simpson not found' });
+    res.status(200).send(findSimpson);
+
+});
+
+app.post('/simpsons', (req, res) =>{
+    const { id, name } = req.body;
+    const simpsons = JSON.parse(fs.readFileSync('./simpsons.json','utf-8'));
+    simpsons.push({ id, name });
+    fs.writeFileSync('./simpsons.json', JSON.stringify(simpsons));
+
+    res.status(204).end();
 });
 
 app.post('/hello', (req, res) => {
