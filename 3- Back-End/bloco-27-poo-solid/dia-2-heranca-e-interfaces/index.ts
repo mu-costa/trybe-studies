@@ -60,11 +60,69 @@ class Student extends Person {
     }
 
     set addExamGrade ( grade: number) {
-        this._examsGrades.push(grade);
+        if(this._examsGrades.length <= 4) this._examsGrades.push(grade);    
     }
 
     set addWorkGrade ( grade: number) {
-        this._worksGrades.push(grade);
+        if(this._worksGrades.length <= 2) this._worksGrades.push(grade);
+    }
+
+    set enrollment ( enrollment: string) {
+        if(enrollment.length >= 16 )this._enrollment = enrollment;
     }
 }
 
+interface Employee {
+    registration: number;
+    salary: number;
+    admissionDate : string;
+    generateRegistration () : string;
+}
+
+class Subject {
+    _name: string;
+
+    constructor (name: string) {
+        this._name = name;
+    }
+
+    get name () { return this._name };
+    set changeName (name: string) {
+        if(name.length >= 3) this._name = name;
+    }
+
+
+}
+
+class Teacher extends Person implements Employee{
+    private _registration: number;
+    private _salary: number;
+    private _admissionDate : string;
+    private _subject : string;
+
+    constructor(name:string, birthDate: Date, salary: number, subject: string )  {
+        super(name, birthDate)
+        this._salary = salary;
+        this._subject = subject;
+    }
+
+    get registration () { return this._registration };
+    get salary () { return this._salary };
+    get admissionDate () { return this._admissionDate };
+    get subject () { return this._subject };
+
+    generateRegistration(): string {
+        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let result = ' ';
+        const charactersLength = characters.length;
+        for ( let i = 0; i < 17; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+
+         return result;
+    }
+
+    set changeSalary ( salary : number) {
+        if(salary >= 0 ) this._salary = salary;
+    }
+}
