@@ -28,13 +28,21 @@ def list_of_names(names):
     return names[bigger]
 
 def coverage_of_ink(size_wall):
-    total_liters = size_wall / 3
-    final_price = 0
-    if total_liters <= 18:
-        final_price = 80,00
-        return (1, final_price)
+    # primeiro calcular a quantidade de litros
+    total_of_liters = round(size_wall / 3, 2)
+    tin = 18
+    if total_of_liters <= tin:
+        return ('1 lata', '80 reais')
     else:
-        total_tin = math.sqrt(18 * (total_liters ** 2) / )
+        total_of_tins = math.ceil(total_of_liters / tin)
+        return (f"Total de latas: {total_of_tins}", f"Valor final {total_of_tins * 80} reais")
 
-
-print(list_of_names(["José","Lucas","Nádia","Fernanda","Cairo","Joana"]))
+def types_of_triangles(x,y,z):
+    if x + y + z != 180:
+        return "não é triangulo"
+    elif x == y and x == z and y == z:
+        return "triangulo equilatero"
+    elif x == y or x == z or y == z:
+        return "triangulo isósceles"
+    else:
+        return "triangulo escaleno"
